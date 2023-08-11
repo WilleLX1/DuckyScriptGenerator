@@ -78,6 +78,7 @@
             // 
             // FileBox
             // 
+            FileBox.BackColor = SystemColors.Control;
             FileBox.Controls.Add(txtDeleteFile);
             FileBox.Controls.Add(cbDeleteFile);
             FileBox.Controls.Add(txtDownloadFilePath);

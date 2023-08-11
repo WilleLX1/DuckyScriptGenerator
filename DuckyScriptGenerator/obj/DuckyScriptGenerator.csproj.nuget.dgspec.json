@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj": {}
+    "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj": {}
   },
   "projects": {
-    "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj": {
+    "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
+        "projectUniqueName": "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
         "projectName": "DuckyScriptGenerator",
-        "projectPath": "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
+        "projectPath": "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
         "packagesPath": "C:\\Users\\wdani\\.nuget\\packages\\",
-        "outputPath": "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\obj\\",
+        "outputPath": "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

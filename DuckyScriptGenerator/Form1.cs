@@ -103,7 +103,7 @@ namespace DuckyScriptGenerator
         //                                          OUTPUT BUTTONS
         //
         // ----------------------------------------------------------------------------------------------------- //
-        
+
         // Event handler for the Save button
         private void btnSaveDC_Click(object sender, EventArgs e)
         {
@@ -217,7 +217,7 @@ namespace DuckyScriptGenerator
         //                                          PROFILE STUFF
         //
         // ----------------------------------------------------------------------------------------------------- //
-        
+
         // Creates/Saves a profile 
         private void SaveProfile(string profileName, Profile profile)
         {

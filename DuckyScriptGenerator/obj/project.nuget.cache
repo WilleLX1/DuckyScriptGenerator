@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HEHCVeX7L4BuZ1eHmZYdx75M7p10rGwpvKelUSlTUa1aYsmZFQC+SrZOEyZ9h/r7xTy3P4e258ZPzORhY7EeIw==",
+  "dgSpecHash": "pepognauguBvibtaVs3uqUPBbN+tTZd74pdXInQzqQVufM78H8si6jVGFU84G0zoAjF+hNXRq0HEqtVEfnGb8Q==",
   "success": true,
-  "projectFilePath": "D:\\Malware\\Flipper Zero\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
+  "projectFilePath": "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wdani\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.16\\microsoft.windowsdesktop.app.ref.6.0.16.nupkg.sha512",
     "C:\\Users\\wdani\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.16\\microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
