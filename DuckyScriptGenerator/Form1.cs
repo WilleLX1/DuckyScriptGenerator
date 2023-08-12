@@ -139,7 +139,7 @@ namespace DuckyScriptGenerator
             GenerateOutputCode();
         }
 
-        // The Generation of the duckycode. Kind of straightforward (Alot of comments inside of void).
+        // The Generation of the duckycode.
         private void GenerateOutputCode()
         {
             // Stage 1 and 2 payloads. Just regular Win + R payload. It executes "customContent" with powershell.
@@ -297,7 +297,7 @@ namespace DuckyScriptGenerator
             }
         }
 
-        // Event handler for renaming a profile. It also updates the cbProfiles by calling "LoadProfiles"
+        // Event handler for renaming a profile. It also updates the "cbProfiles" by calling "LoadProfiles"
         private void btnRenameProfile_Click(object sender, EventArgs e)
         {
             if (cbProfiles.SelectedIndex != -1)
@@ -317,6 +317,92 @@ namespace DuckyScriptGenerator
             }
         }
 
+        // Event handler for deleting a profile
+        private void btnDeleteProfile_Click(object sender, EventArgs e)
+        {
+            if (cbProfiles.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a profile to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string selectedProfileName = cbProfiles.SelectedItem.ToString();
+
+            DialogResult confirmResult = MessageBox.Show($"Are you sure you want to delete the profile '{selectedProfileName}'?",
+                                                        "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                string profileFilePath = Path.Combine("Profiles", $"{selectedProfileName}.json");
+                File.Delete(profileFilePath);
+
+                LoadProfiles(); // Refresh the ComboBox
+
+                MessageBox.Show("Profile deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // Event handler for exporting a profile
+        private void btnExportProfile_Click(object sender, EventArgs e)
+        {
+            if (cbProfiles.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a profile to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string selectedProfileName = cbProfiles.SelectedItem.ToString();
+            string profileFilePath = Path.Combine("Profiles", $"{selectedProfileName}.json");
+
+            saveFileDialog.FileName = selectedProfileName + ".json";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    File.Copy(profileFilePath, saveFileDialog.FileName, true);
+                    MessageBox.Show("Profile exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error exporting profile: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Event handler for importing profiles or a profile.
+        private void btnImportProfile_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Filter = "Profile files (*.json)|*.json|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+
+                try
+                {
+                    // Deserialize the JSON content into a Profile object
+                    string jsonContent = File.ReadAllText(selectedFilePath);
+                    Profile importedProfile = JsonSerializer.Deserialize<Profile>(jsonContent);
+
+                    // Save the imported profile to the "Profiles" directory
+                    string importedProfileName = Path.GetFileNameWithoutExtension(selectedFilePath);
+                    string importedProfileFilePath = Path.Combine("Profiles", $"{importedProfileName}.json");
+                    string uniqueImportedProfileName = GenerateUniqueProfileName(importedProfileName);
+                    importedProfileFilePath = Path.Combine("Profiles", $"{uniqueImportedProfileName}.json");
+
+                    string serializedProfile = JsonSerializer.Serialize(importedProfile);
+                    File.WriteAllText(importedProfileFilePath, serializedProfile);
+
+                    // Refresh the ComboBox
+                    LoadProfiles();
+
+                    MessageBox.Show("Profile imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error importing profile: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         // Creates variables for a profile config file 
         private Profile CreateProfileFromUI()
@@ -380,6 +466,20 @@ namespace DuckyScriptGenerator
                 File.Move(oldFilePath, newFilePath);
             }
         }
+
+        // Generates a Uniqe filename for imported profiles.
+        private string GenerateUniqueProfileName(string baseName)
+        {
+            string uniqueName = baseName;
+            int counter = 1;
+            while (File.Exists(Path.Combine("Profiles", $"{uniqueName}.json")))
+            {
+                uniqueName = $"{baseName}_{counter}";
+                counter++;
+            }
+            return uniqueName;
+        }
+
     }
 
     // All options that can be set and used.

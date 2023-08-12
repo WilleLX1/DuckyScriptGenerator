@@ -38,6 +38,9 @@
             txtExecuteFile = new TextBox();
             TitleBox = new GroupBox();
             ProfileBox = new GroupBox();
+            btnImportProfile = new Button();
+            btnExportProfile = new Button();
+            btnDeleteProfile = new Button();
             btnRenameProfile = new Button();
             cbProfiles = new ComboBox();
             btnLoadProfile = new Button();
@@ -48,6 +51,7 @@
             btnSaveDS = new Button();
             txtOutput = new TextBox();
             groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             FileBox.SuspendLayout();
             TitleBox.SuspendLayout();
             ProfileBox.SuspendLayout();
@@ -88,7 +92,7 @@
             FileBox.Controls.Add(cbDownloadFile);
             FileBox.Location = new Point(12, 118);
             FileBox.Name = "FileBox";
-            FileBox.Size = new Size(449, 132);
+            FileBox.Size = new Size(470, 132);
             FileBox.TabIndex = 2;
             FileBox.TabStop = false;
             FileBox.Text = "FILE STUFF";
@@ -147,22 +151,56 @@
             TitleBox.Dock = DockStyle.Top;
             TitleBox.Location = new Point(0, 0);
             TitleBox.Name = "TitleBox";
-            TitleBox.Size = new Size(800, 100);
+            TitleBox.Size = new Size(821, 100);
             TitleBox.TabIndex = 3;
             TitleBox.TabStop = false;
             // 
             // ProfileBox
             // 
+            ProfileBox.Controls.Add(btnImportProfile);
+            ProfileBox.Controls.Add(btnExportProfile);
+            ProfileBox.Controls.Add(btnDeleteProfile);
             ProfileBox.Controls.Add(btnRenameProfile);
             ProfileBox.Controls.Add(cbProfiles);
             ProfileBox.Controls.Add(btnLoadProfile);
             ProfileBox.Controls.Add(btnSaveProfile);
-            ProfileBox.Location = new Point(609, 12);
+            ProfileBox.Dock = DockStyle.Right;
+            ProfileBox.Location = new Point(565, 19);
             ProfileBox.Name = "ProfileBox";
-            ProfileBox.Size = new Size(185, 89);
+            ProfileBox.Size = new Size(253, 78);
             ProfileBox.TabIndex = 8;
             ProfileBox.TabStop = false;
             ProfileBox.Text = "PROFILES";
+            // 
+            // btnImportProfile
+            // 
+            btnImportProfile.Location = new Point(191, 7);
+            btnImportProfile.Name = "btnImportProfile";
+            btnImportProfile.Size = new Size(62, 23);
+            btnImportProfile.TabIndex = 12;
+            btnImportProfile.Text = "IMPORT";
+            btnImportProfile.UseVisualStyleBackColor = true;
+            btnImportProfile.Click += btnImportProfile_Click;
+            // 
+            // btnExportProfile
+            // 
+            btnExportProfile.Location = new Point(191, 31);
+            btnExportProfile.Name = "btnExportProfile";
+            btnExportProfile.Size = new Size(62, 23);
+            btnExportProfile.TabIndex = 11;
+            btnExportProfile.Text = "EXPORT";
+            btnExportProfile.UseVisualStyleBackColor = true;
+            btnExportProfile.Click += btnExportProfile_Click;
+            // 
+            // btnDeleteProfile
+            // 
+            btnDeleteProfile.Location = new Point(192, 60);
+            btnDeleteProfile.Name = "btnDeleteProfile";
+            btnDeleteProfile.Size = new Size(61, 23);
+            btnDeleteProfile.TabIndex = 10;
+            btnDeleteProfile.Text = "DELETE";
+            btnDeleteProfile.UseVisualStyleBackColor = true;
+            btnDeleteProfile.Click += btnDeleteProfile_Click;
             // 
             // btnRenameProfile
             // 
@@ -210,7 +248,7 @@
             TitleText.Font = new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point);
             TitleText.Location = new Point(3, 19);
             TitleText.Name = "TitleText";
-            TitleText.Size = new Size(794, 58);
+            TitleText.Size = new Size(815, 58);
             TitleText.TabIndex = 0;
             TitleText.Text = "DuckyScript Generator";
             // 
@@ -220,7 +258,7 @@
             OutputBox.Controls.Add(btnSaveDS);
             OutputBox.Controls.Add(txtOutput);
             OutputBox.Dock = DockStyle.Right;
-            OutputBox.Location = new Point(467, 100);
+            OutputBox.Location = new Point(488, 100);
             OutputBox.Name = "OutputBox";
             OutputBox.Size = new Size(333, 575);
             OutputBox.TabIndex = 4;
@@ -260,16 +298,26 @@
             // 
             groupBox1.Location = new Point(12, 256);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(449, 148);
+            groupBox1.Size = new Size(470, 148);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "STAGE 3";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Location = new Point(12, 410);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(470, 148);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "STAGE 4 (Exfil)";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 675);
+            ClientSize = new Size(821, 675);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(OutputBox);
             Controls.Add(TitleBox);
@@ -309,5 +357,9 @@
         private Button btnLoadProfile;
         private Button btnSaveProfile;
         private Button btnRenameProfile;
+        private Button btnExportProfile;
+        private Button btnDeleteProfile;
+        private Button btnImportProfile;
+        private GroupBox groupBox2;
     }
 }
