@@ -31,11 +31,11 @@
             cbDownloadFile = new CheckBox();
             cbExecuteFile = new CheckBox();
             FileBox = new GroupBox();
-            txtDeleteFile = new TextBox();
+            txtFILEDeleteFile = new TextBox();
             cbDeleteFile = new CheckBox();
-            txtDownloadFilePath = new TextBox();
-            txtDownloadFileURL = new TextBox();
-            txtExecuteFile = new TextBox();
+            txtFILEDownloadFilePath = new TextBox();
+            txtFILEDownloadFileURL = new TextBox();
+            txtFILEExecuteFile = new TextBox();
             TitleBox = new GroupBox();
             ProfileBox = new GroupBox();
             btnImportProfile = new Button();
@@ -52,10 +52,16 @@
             txtOutput = new TextBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            txtEXFILPostReqFileToSend = new TextBox();
+            cbPostRequest = new CheckBox();
+            txtEXFILWebhookFileToSend = new TextBox();
+            txtEXFILWebhookTOKEN = new TextBox();
+            cbDiscordWebhook = new CheckBox();
             FileBox.SuspendLayout();
             TitleBox.SuspendLayout();
             ProfileBox.SuspendLayout();
             OutputBox.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // cbDownloadFile
@@ -83,11 +89,11 @@
             // FileBox
             // 
             FileBox.BackColor = SystemColors.Control;
-            FileBox.Controls.Add(txtDeleteFile);
+            FileBox.Controls.Add(txtFILEDeleteFile);
             FileBox.Controls.Add(cbDeleteFile);
-            FileBox.Controls.Add(txtDownloadFilePath);
-            FileBox.Controls.Add(txtDownloadFileURL);
-            FileBox.Controls.Add(txtExecuteFile);
+            FileBox.Controls.Add(txtFILEDownloadFilePath);
+            FileBox.Controls.Add(txtFILEDownloadFileURL);
+            FileBox.Controls.Add(txtFILEExecuteFile);
             FileBox.Controls.Add(cbExecuteFile);
             FileBox.Controls.Add(cbDownloadFile);
             FileBox.Location = new Point(12, 118);
@@ -95,16 +101,16 @@
             FileBox.Size = new Size(470, 132);
             FileBox.TabIndex = 2;
             FileBox.TabStop = false;
-            FileBox.Text = "FILE STUFF";
+            FileBox.Text = "FILE STUFF (STAGE 1/2)";
             // 
-            // txtDeleteFile
+            // txtFILEDeleteFile
             // 
-            txtDeleteFile.Enabled = false;
-            txtDeleteFile.Location = new Point(92, 103);
-            txtDeleteFile.Name = "txtDeleteFile";
-            txtDeleteFile.Size = new Size(351, 23);
-            txtDeleteFile.TabIndex = 5;
-            txtDeleteFile.Text = "Path To File";
+            txtFILEDeleteFile.Enabled = false;
+            txtFILEDeleteFile.Location = new Point(92, 103);
+            txtFILEDeleteFile.Name = "txtFILEDeleteFile";
+            txtFILEDeleteFile.Size = new Size(372, 23);
+            txtFILEDeleteFile.TabIndex = 5;
+            txtFILEDeleteFile.Text = "Path To File";
             // 
             // cbDeleteFile
             // 
@@ -117,32 +123,32 @@
             cbDeleteFile.UseVisualStyleBackColor = true;
             cbDeleteFile.CheckedChanged += cbDeleteFile_CheckedChanged;
             // 
-            // txtDownloadFilePath
+            // txtFILEDownloadFilePath
             // 
-            txtDownloadFilePath.Enabled = false;
-            txtDownloadFilePath.Location = new Point(113, 74);
-            txtDownloadFilePath.Name = "txtDownloadFilePath";
-            txtDownloadFilePath.Size = new Size(330, 23);
-            txtDownloadFilePath.TabIndex = 4;
-            txtDownloadFilePath.Text = "Path To Place File";
+            txtFILEDownloadFilePath.Enabled = false;
+            txtFILEDownloadFilePath.Location = new Point(113, 74);
+            txtFILEDownloadFilePath.Name = "txtFILEDownloadFilePath";
+            txtFILEDownloadFilePath.Size = new Size(351, 23);
+            txtFILEDownloadFilePath.TabIndex = 4;
+            txtFILEDownloadFilePath.Text = "Path To Place File";
             // 
-            // txtDownloadFileURL
+            // txtFILEDownloadFileURL
             // 
-            txtDownloadFileURL.Enabled = false;
-            txtDownloadFileURL.Location = new Point(113, 51);
-            txtDownloadFileURL.Name = "txtDownloadFileURL";
-            txtDownloadFileURL.Size = new Size(330, 23);
-            txtDownloadFileURL.TabIndex = 3;
-            txtDownloadFileURL.Text = "URL To Download";
+            txtFILEDownloadFileURL.Enabled = false;
+            txtFILEDownloadFileURL.Location = new Point(113, 51);
+            txtFILEDownloadFileURL.Name = "txtFILEDownloadFileURL";
+            txtFILEDownloadFileURL.Size = new Size(351, 23);
+            txtFILEDownloadFileURL.TabIndex = 3;
+            txtFILEDownloadFileURL.Text = "URL To Download";
             // 
-            // txtExecuteFile
+            // txtFILEExecuteFile
             // 
-            txtExecuteFile.Enabled = false;
-            txtExecuteFile.Location = new Point(100, 22);
-            txtExecuteFile.Name = "txtExecuteFile";
-            txtExecuteFile.Size = new Size(343, 23);
-            txtExecuteFile.TabIndex = 2;
-            txtExecuteFile.Text = "Path To Executable";
+            txtFILEExecuteFile.Enabled = false;
+            txtFILEExecuteFile.Location = new Point(100, 20);
+            txtFILEExecuteFile.Name = "txtFILEExecuteFile";
+            txtFILEExecuteFile.Size = new Size(364, 23);
+            txtFILEExecuteFile.TabIndex = 2;
+            txtFILEExecuteFile.Text = "Path To Executable";
             // 
             // TitleBox
             // 
@@ -305,12 +311,66 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txtEXFILPostReqFileToSend);
+            groupBox2.Controls.Add(cbPostRequest);
+            groupBox2.Controls.Add(txtEXFILWebhookFileToSend);
+            groupBox2.Controls.Add(txtEXFILWebhookTOKEN);
+            groupBox2.Controls.Add(cbDiscordWebhook);
             groupBox2.Location = new Point(12, 410);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(470, 148);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
-            groupBox2.Text = "STAGE 4 (Exfil)";
+            groupBox2.Text = "EXFIL (STAGE 4)";
+            // 
+            // txtEXFILPostReqFileToSend
+            // 
+            txtEXFILPostReqFileToSend.Enabled = false;
+            txtEXFILPostReqFileToSend.Location = new Point(106, 69);
+            txtEXFILPostReqFileToSend.Name = "txtEXFILPostReqFileToSend";
+            txtEXFILPostReqFileToSend.Size = new Size(358, 23);
+            txtEXFILPostReqFileToSend.TabIndex = 4;
+            txtEXFILPostReqFileToSend.Text = "PATH to File to Send";
+            // 
+            // cbPostRequest
+            // 
+            cbPostRequest.AutoSize = true;
+            cbPostRequest.Location = new Point(6, 69);
+            cbPostRequest.Name = "cbPostRequest";
+            cbPostRequest.Size = new Size(94, 19);
+            cbPostRequest.TabIndex = 3;
+            cbPostRequest.Text = "Post Request";
+            cbPostRequest.UseVisualStyleBackColor = true;
+            cbPostRequest.CheckedChanged += cbPostRequest_CheckedChanged;
+            // 
+            // txtEXFILWebhookFileToSend
+            // 
+            txtEXFILWebhookFileToSend.Enabled = false;
+            txtEXFILWebhookFileToSend.Location = new Point(132, 40);
+            txtEXFILWebhookFileToSend.Name = "txtEXFILWebhookFileToSend";
+            txtEXFILWebhookFileToSend.Size = new Size(332, 23);
+            txtEXFILWebhookFileToSend.TabIndex = 2;
+            txtEXFILWebhookFileToSend.Text = "PATH to File to Send";
+            // 
+            // txtEXFILWebhookTOKEN
+            // 
+            txtEXFILWebhookTOKEN.Enabled = false;
+            txtEXFILWebhookTOKEN.Location = new Point(132, 20);
+            txtEXFILWebhookTOKEN.Name = "txtEXFILWebhookTOKEN";
+            txtEXFILWebhookTOKEN.Size = new Size(332, 23);
+            txtEXFILWebhookTOKEN.TabIndex = 1;
+            txtEXFILWebhookTOKEN.Text = "WEBHOOK TOKEN";
+            // 
+            // cbDiscordWebhook
+            // 
+            cbDiscordWebhook.AutoSize = true;
+            cbDiscordWebhook.Location = new Point(6, 22);
+            cbDiscordWebhook.Name = "cbDiscordWebhook";
+            cbDiscordWebhook.Size = new Size(120, 19);
+            cbDiscordWebhook.TabIndex = 0;
+            cbDiscordWebhook.Text = "Discord Webhook";
+            cbDiscordWebhook.UseVisualStyleBackColor = true;
+            cbDiscordWebhook.CheckedChanged += cbDiscordWebhook_CheckedChanged;
             // 
             // Form1
             // 
@@ -332,6 +392,8 @@
             ProfileBox.ResumeLayout(false);
             OutputBox.ResumeLayout(false);
             OutputBox.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -343,13 +405,13 @@
         private GroupBox TitleBox;
         private TextBox TitleText;
         private GroupBox OutputBox;
-        private TextBox txtDownloadFileURL;
-        private TextBox txtExecuteFile;
+        private TextBox txtFILEDownloadFileURL;
+        private TextBox txtFILEExecuteFile;
         private Button btnSaveDS;
         private TextBox txtOutput;
         private Button btnGenerateDS;
-        private TextBox txtDownloadFilePath;
-        private TextBox txtDeleteFile;
+        private TextBox txtFILEDownloadFilePath;
+        private TextBox txtFILEDeleteFile;
         private CheckBox cbDeleteFile;
         private GroupBox groupBox1;
         private GroupBox ProfileBox;
@@ -361,5 +423,10 @@
         private Button btnDeleteProfile;
         private Button btnImportProfile;
         private GroupBox groupBox2;
+        private CheckBox cbDiscordWebhook;
+        private TextBox txtEXFILWebhookTOKEN;
+        private TextBox txtEXFILWebhookFileToSend;
+        private CheckBox cbPostRequest;
+        private TextBox txtEXFILPostReqFileToSend;
     }
 }

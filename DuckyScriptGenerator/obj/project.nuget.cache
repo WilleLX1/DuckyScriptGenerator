@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pepognauguBvibtaVs3uqUPBbN+tTZd74pdXInQzqQVufM78H8si6jVGFU84G0zoAjF+hNXRq0HEqtVEfnGb8Q==",
+  "dgSpecHash": "P17f9cM4Sqy3PkBsHLHsjV1K9kE04MCZ17Bjo9EFC+wZqrZIgx0ld5ezOClkzByvnt3xvXOncTpeQIi3I6x8iQ==",
   "success": true,
-  "projectFilePath": "D:\\Malware\\Github Repository\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\wdani\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.16\\microsoft.windowsdesktop.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\wdani\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.16\\microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\wdani\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.16\\microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\wdani\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.16\\microsoft.netcore.app.host.win-x64.6.0.16.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Github-Stuff\\C#\\DuckyScriptGenerator\\DuckyScriptGenerator\\DuckyScriptGenerator.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

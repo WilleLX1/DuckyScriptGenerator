@@ -32,3 +32,20 @@ D:\Malware\Github Repository\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug
 D:\Malware\Github Repository\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.pdb
 D:\Malware\Github Repository\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.genruntimeconfig.cache
 D:\Malware\Github Repository\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\ref\DuckyScriptGenerator.dll
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\bin\Debug\net6.0-windows\DuckyScriptGenerator.exe
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\bin\Debug\net6.0-windows\DuckyScriptGenerator.deps.json
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\bin\Debug\net6.0-windows\DuckyScriptGenerator.runtimeconfig.json
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\bin\Debug\net6.0-windows\DuckyScriptGenerator.dll
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\bin\Debug\net6.0-windows\DuckyScriptGenerator.pdb
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.csproj.AssemblyReference.cache
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.Form1.resources
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.csproj.GenerateResource.cache
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.AssemblyInfoInputs.cache
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.AssemblyInfo.cs
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.csproj.CoreCompileInputs.cache
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.dll
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\refint\DuckyScriptGenerator.dll
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.pdb
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\DuckyScriptGenerator.genruntimeconfig.cache
+C:\Github-Stuff\C#\DuckyScriptGenerator\DuckyScriptGenerator\obj\Debug\net6.0-windows\ref\DuckyScriptGenerator.dll
