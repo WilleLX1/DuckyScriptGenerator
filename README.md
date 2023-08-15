@@ -19,7 +19,7 @@
       1) WORK IN PROGRESS!
 
 
-# Future Scripts:
+# Future Features:
       1) Exfil with Discord Webhook
       2) Exfil with Post Request
       3) Exfil with SMTP
