@@ -12,7 +12,7 @@
       2) Execute File from PATH (.EXE file)
       3) Delete File from PATH
 
-### File Stuff (OPTIONAL Stage 3)
+### Gathering (OPTIONAL Stage 3)
       1) WORK IN PROGRESS!
 
 ### Exfiltration (OPTIONAL Stage 4)
@@ -20,10 +20,19 @@
 
 
 # Future Features:
-      1) Exfil with Discord Webhook
-      2) Exfil with Post Request
-      3) Exfil with SMTP
-      4) Add more stuff to Stage 3
+    1) Exfil with Discord Webhook
+    2) Exfil with Post Request
+    3) Exfil with SMTP
+    4) Gather Wi-Fi Passwords
+    5) Gather Browser History
+    6) Gather Browser Passwords
+    7) Gather System Information
+    8) Gather Browser Cookies
+    9) Gather Discord Token/s
+    10) Data Encryption
+    11) Cross-Platform Compatibility
+    12) Error Handling and Validation
+    
 
 # Warning:-
     Use this tool Only for Educational Purpose And I will Not be Responsible For ur cruel act.
