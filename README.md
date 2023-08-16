@@ -26,7 +26,9 @@
     4) Gather Wi-Fi Passwords
     5) Gather Browser History
     6) Gather Browser Passwords
-    7) Gather 
+    7) Gather System Information
+    8) Data Encryption
+    9) Cross-Platform Compatibility
 
 # Warning:-
     Use this tool Only for Educational Purpose And I will Not be Responsible For ur cruel act.
