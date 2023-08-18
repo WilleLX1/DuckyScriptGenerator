@@ -52,7 +52,59 @@ namespace DuckyScriptGenerator
             saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
         }
 
+        // ----------------------------------------------------------------------------------------------------- //
+        // 
+        //                                         TXT INSTRUCTIONS
+        //               (Basicly if textbox is null then it will replace it with original text)
+        //
+        // ----------------------------------------------------------------------------------------------------- //
+        private void FixEmpty(string textBoxName, string whatToFillWith)
+        {
+            TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
 
+            if (textBox != null)
+            {
+                Debug.WriteLine($"FixEmpty called for {textBoxName}. Current text: '{textBox.Text}'");
+
+                if (string.IsNullOrEmpty(textBox.Text))
+                {
+                    Debug.WriteLine($"Filling {textBoxName} with '{whatToFillWith}'");
+                    textBox.Text = whatToFillWith;
+                }
+            }
+        }
+        private void txtFILEExecuteFile_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtFILEExecuteFile", "PATH To Executable");
+        }
+        private void txtFILEDownloadFileURL_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtFILEDownloadFileURL", "URL To Download");
+        }
+        private void txtFILEDownloadFilePath_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtFILEDownloadFilePath", "Path To Place File");
+        }
+        private void txtFILEDeleteFile_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtFILEDeleteFile", "PATH To File");
+        }
+        private void txtGATHERoutputFile_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtGATHERoutputFile", "PATH To Place Output");
+        }
+        private void txtEXFILWebhookTOKEN_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtEXFILWebhookTOKEN", "WEBHOOK TOKEN");
+        }
+        private void txtEXFILWebhookFileToSend_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtEXFILWebhookFileToSend", "PATH to File to Send");
+        }
+        private void txtEXFILPostReqFileToSend_TextChanged(object sender, EventArgs e)
+        {
+            FixEmpty("txtEXFILPostReqFileToSend", "PATH to File to Send (.CSV)");
+        }
         // ----------------------------------------------------------------------------------------------------- //
         // 
         //                                     FILE STUFF (STAGE 1/2)
@@ -557,6 +609,9 @@ namespace DuckyScriptGenerator
                 ExecuteFileName = txtFILEExecuteFile.Text,
                 DeleteFileEnabled = cbDeleteFile.Checked,
                 DeleteFilePath = txtFILEDeleteFile.Text,
+                // STAGE 3:
+                GatherWiFiEnabled = cbWiFiPasswords.Checked,
+                WifiOutputPath = txtGATHERoutputFile.Text,
                 // STAGE 4:
                 DiscordWebhookEnabled = cbDiscordWebhook.Checked,
                 DiscordWebhookTOKEN = txtEXFILWebhookTOKEN.Text,
@@ -576,6 +631,9 @@ namespace DuckyScriptGenerator
             txtFILEExecuteFile.Text = profile.ExecuteFileName;
             cbDeleteFile.Checked = profile.DeleteFileEnabled;
             txtFILEDeleteFile.Text = profile.DeleteFilePath;
+            // STAGE 3:
+            cbWiFiPasswords.Checked = profile.GatherWiFiEnabled;
+            txtGATHERoutputFile.Text = profile.WifiOutputPath;
             // STAGE 4:
             cbDiscordWebhook.Checked = profile.DiscordWebhookEnabled;
             txtEXFILWebhookTOKEN.Text = profile.DiscordWebhookTOKEN;
@@ -633,6 +691,7 @@ namespace DuckyScriptGenerator
             return uniqueName;
         }
 
+
     }
 
     // All options that can be set and used. (IF ADDED NEW SETTINGS EDIT THIS!!!)
@@ -646,7 +705,9 @@ namespace DuckyScriptGenerator
         public string ExecuteFileName { get; set; }
         public bool DeleteFileEnabled { get; set; }
         public string DeleteFilePath { get; set; }
-
+        // Stage 3 Settings
+        public bool GatherWiFiEnabled { get; set; }
+        public string WifiOutputPath { get; set; }
         // Stage 4 Settings
         public bool DiscordWebhookEnabled { get; set; }
         public string DiscordWebhookTOKEN { get; set; }

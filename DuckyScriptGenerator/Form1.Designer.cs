@@ -51,14 +51,14 @@
             btnSaveDS = new Button();
             txtOutput = new TextBox();
             groupBox1 = new GroupBox();
+            txtGATHERoutputFile = new TextBox();
+            cbWiFiPasswords = new CheckBox();
             groupBox2 = new GroupBox();
             txtEXFILPostReqFileToSend = new TextBox();
             cbPostRequest = new CheckBox();
             txtEXFILWebhookFileToSend = new TextBox();
             txtEXFILWebhookTOKEN = new TextBox();
             cbDiscordWebhook = new CheckBox();
-            cbWiFiPasswords = new CheckBox();
-            txtGATHERoutputFile = new TextBox();
             FileBox.SuspendLayout();
             TitleBox.SuspendLayout();
             ProfileBox.SuspendLayout();
@@ -118,7 +118,8 @@
             txtFILEDeleteFile.Name = "txtFILEDeleteFile";
             txtFILEDeleteFile.Size = new Size(425, 27);
             txtFILEDeleteFile.TabIndex = 5;
-            txtFILEDeleteFile.Text = "Path To File";
+            txtFILEDeleteFile.Text = "PATH To File";
+            txtFILEDeleteFile.TextChanged += txtFILEDeleteFile_TextChanged;
             // 
             // cbDeleteFile
             // 
@@ -141,6 +142,7 @@
             txtFILEDownloadFilePath.Size = new Size(401, 27);
             txtFILEDownloadFilePath.TabIndex = 4;
             txtFILEDownloadFilePath.Text = "Path To Place File";
+            txtFILEDownloadFilePath.TextChanged += txtFILEDownloadFilePath_TextChanged;
             // 
             // txtFILEDownloadFileURL
             // 
@@ -151,6 +153,7 @@
             txtFILEDownloadFileURL.Size = new Size(401, 27);
             txtFILEDownloadFileURL.TabIndex = 3;
             txtFILEDownloadFileURL.Text = "URL To Download";
+            txtFILEDownloadFileURL.TextChanged += txtFILEDownloadFileURL_TextChanged;
             // 
             // txtFILEExecuteFile
             // 
@@ -160,7 +163,8 @@
             txtFILEExecuteFile.Name = "txtFILEExecuteFile";
             txtFILEExecuteFile.Size = new Size(415, 27);
             txtFILEExecuteFile.TabIndex = 2;
-            txtFILEExecuteFile.Text = "Path To Executable";
+            txtFILEExecuteFile.Text = "PATH To Executable";
+            txtFILEExecuteFile.TextChanged += txtFILEExecuteFile_TextChanged;
             // 
             // TitleBox
             // 
@@ -342,6 +346,28 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "GATHER (STAGE 3)";
             // 
+            // txtGATHERoutputFile
+            // 
+            txtGATHERoutputFile.Enabled = false;
+            txtGATHERoutputFile.Location = new Point(144, 28);
+            txtGATHERoutputFile.Name = "txtGATHERoutputFile";
+            txtGATHERoutputFile.Size = new Size(385, 27);
+            txtGATHERoutputFile.TabIndex = 6;
+            txtGATHERoutputFile.Text = "PATH To Place Output";
+            txtGATHERoutputFile.TextChanged += txtGATHERoutputFile_TextChanged;
+            // 
+            // cbWiFiPasswords
+            // 
+            cbWiFiPasswords.AutoSize = true;
+            cbWiFiPasswords.Location = new Point(7, 28);
+            cbWiFiPasswords.Margin = new Padding(3, 4, 3, 4);
+            cbWiFiPasswords.Name = "cbWiFiPasswords";
+            cbWiFiPasswords.Size = new Size(131, 24);
+            cbWiFiPasswords.TabIndex = 5;
+            cbWiFiPasswords.Text = "WiFi Passwords";
+            cbWiFiPasswords.UseVisualStyleBackColor = true;
+            cbWiFiPasswords.CheckedChanged += cbWiFiPasswords_CheckedChanged;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(txtEXFILPostReqFileToSend);
@@ -367,6 +393,7 @@
             txtEXFILPostReqFileToSend.Size = new Size(409, 27);
             txtEXFILPostReqFileToSend.TabIndex = 4;
             txtEXFILPostReqFileToSend.Text = "PATH to File to Send (.CSV)";
+            txtEXFILPostReqFileToSend.TextChanged += txtEXFILPostReqFileToSend_TextChanged;
             // 
             // cbPostRequest
             // 
@@ -389,6 +416,7 @@
             txtEXFILWebhookFileToSend.Size = new Size(379, 27);
             txtEXFILWebhookFileToSend.TabIndex = 2;
             txtEXFILWebhookFileToSend.Text = "PATH to File to Send";
+            txtEXFILWebhookFileToSend.TextChanged += txtEXFILWebhookFileToSend_TextChanged;
             // 
             // txtEXFILWebhookTOKEN
             // 
@@ -399,6 +427,7 @@
             txtEXFILWebhookTOKEN.Size = new Size(379, 27);
             txtEXFILWebhookTOKEN.TabIndex = 1;
             txtEXFILWebhookTOKEN.Text = "WEBHOOK TOKEN";
+            txtEXFILWebhookTOKEN.TextChanged += txtEXFILWebhookTOKEN_TextChanged;
             // 
             // cbDiscordWebhook
             // 
@@ -411,27 +440,6 @@
             cbDiscordWebhook.Text = "Discord Webhook";
             cbDiscordWebhook.UseVisualStyleBackColor = true;
             cbDiscordWebhook.CheckedChanged += cbDiscordWebhook_CheckedChanged;
-            // 
-            // cbWiFiPasswords
-            // 
-            cbWiFiPasswords.AutoSize = true;
-            cbWiFiPasswords.Location = new Point(7, 28);
-            cbWiFiPasswords.Margin = new Padding(3, 4, 3, 4);
-            cbWiFiPasswords.Name = "cbWiFiPasswords";
-            cbWiFiPasswords.Size = new Size(131, 24);
-            cbWiFiPasswords.TabIndex = 5;
-            cbWiFiPasswords.Text = "WiFi Passwords";
-            cbWiFiPasswords.UseVisualStyleBackColor = true;
-            cbWiFiPasswords.CheckedChanged += cbWiFiPasswords_CheckedChanged;
-            // 
-            // txtGATHERoutputFile
-            // 
-            txtGATHERoutputFile.Enabled = false;
-            txtGATHERoutputFile.Location = new Point(144, 28);
-            txtGATHERoutputFile.Name = "txtGATHERoutputFile";
-            txtGATHERoutputFile.Size = new Size(385, 27);
-            txtGATHERoutputFile.TabIndex = 6;
-            txtGATHERoutputFile.Text = "PATH To Place Output";
             // 
             // Form1
             // 
