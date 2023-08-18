@@ -254,6 +254,13 @@ namespace DuckyScriptGenerator
             string duckyCodeStage1 = $"REM Coded by Hacker-Service\r\n" + $"DELAY 500\r\n" + $"GUI r\r\n" + $"DELAY 1500\r\n" + $"STRING ";
             string duckyCodeStage2 = $"\r\nDELAY 500\r\n" + $"ENTER\r\n";
 
+            // Duckyscript for Stage 3 (Gathering)
+            string duckyCodeStage3 = $"REM Stage 3 Starts HERE...\r\n" + $"DELAY 1500\r\n" + $"GUI r\r\n" + $"DELAY 1500\r\n" + $"STRING powershell\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"DELAY 2000\r\n" + $"STRING ";
+
+            // Duckyscript for Stage 4 (Exfil)
+            string duckyCodeStage4 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"STRING ";
+
+
 
             // Bool value to check if User wants to use a stage 3 payload.
             bool hasStage3 = true;
@@ -298,12 +305,6 @@ namespace DuckyScriptGenerator
             }
 
 
-            // Duckyscript for Stage 3 (Gathering)
-            string duckyCodeStage3 = $"REM Stage 3 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"GUI r\r\n" + $"DELAY 1500\r\n" + $"STRING powershell\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"DELAY 2000\r\n" + $"STRING ";
-
-
-            // Duckyscript for Stage 4 (Exfil)
-            string duckyCodeStage4 = $"REM Stage 4 Starts HERE...\r\n" + $"DELAY 500\r\n" + $"ENTER\r\n" + $"STRING ";
 
 
             // The payload on stage 1/2.
@@ -333,11 +334,25 @@ namespace DuckyScriptGenerator
                 // Construct the Duckyscript command for deleting the file
                 customContent += $"Remove-Item \"{DeleteFilePathName}\" -Force; ";
             }
-
+            // Adds exit to the end of command.
             customContent += "exit";
 
-            // Construct the stage 1/2 PowerShell command to execute the Duckyscript payload
-            string powershellCommand = $"powershell -c \"{customContent.Replace("\"", "\\\"")}\"";
+            // String for what to put in Runbox
+            string powershellCommand;
+
+            // Check if User wants to even use stage 1/2.
+            if (customContent == "exit")
+            {
+                // USER DOES NOT USE STAGE 1/2
+                powershellCommand = "powershell";
+                duckyCodeStage3 = $"REM Stage 3 Starts HERE...\r\n" + $"DELAY 2000\r\n" + $"STRING ";
+            }
+            else
+            {
+                // User wants to use Stage 1/2!
+                // Construct the stage 1/2 PowerShell command to execute the Duckyscript payload
+                powershellCommand = $"powershell -c \"{customContent.Replace("\"", "\\\"")}\"";
+            }
 
 
             // ADD MORE CONSTRUCTION FOR OTHER STAGES HERE!!!
