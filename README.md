@@ -13,25 +13,23 @@
       3) Delete File from PATH
 
 ### Gathering (OPTIONAL Stage 3)
-      1) WORK IN PROGRESS!
+      1) Gather Wi-Fi Passwords
 
 ### Exfiltration (OPTIONAL Stage 4)
-      1) WORK IN PROGRESS!
+      1) Exfil File with Discord Webhook
 
 
 # Future Features:
-    1) Exfil with Discord Webhook
-    2) Exfil with Post Request
-    3) Exfil with SMTP
-    4) Gather Wi-Fi Passwords
-    5) Gather Browser History
-    6) Gather Browser Passwords
-    7) Gather System Information
-    8) Gather Browser Cookies
-    9) Gather Discord Token/s
-    10) Data Encryption
-    11) Cross-Platform Compatibility
-    12) Error Handling and Validation
+    1) Exfil with Post Request
+    2) Exfil with SMTP
+    3) Gather Browser History
+    4) Gather Browser Passwords
+    5) Gather System Information
+    6) Gather Browser Cookies
+    7) Gather Discord Token/s
+    8) Data Encryption
+    9) Cross-Platform Compatibility
+    10) Error Handling and Validation
     
 
 # Warning:-
