@@ -30,7 +30,7 @@
     8) Data Encryption
     9) Cross-Platform Compatibility
     10) Error Handling and Validation
-    
+    11) Add VBS or Batch Code Execution
 
 # Warning:-
     Use this tool Only for Educational Purpose And I will Not be Responsible For ur cruel act.
